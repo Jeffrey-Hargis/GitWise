@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
-import { withRouter } from 'react';
-import Login from './components/Login';
+import { Switch, Route, withRouter } from 'react-router-dom';
+import Login from './components/Login'
+import UserPage from './components/UserPage'
+
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <NavBar />
-          <Login />
-        
+        <Route exact path="/" component={Login}/>
+        <Route path="/userhome" component={UserPage}/>
       </div>
     )
     }
