@@ -3,17 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "mongoose": "^5.4.19",
-    "react": "^16.8.4",
-    "react-bootstrap": "^1.0.0-beta.6",
-    "react-dom": "^16.8.4",
-    "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
     "apollo-boost": "^0.3.1",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
-    "react-apollo": "^2.5.3"
+    "mongoose": "^5.4.19",
+    "react": "^16.8.4",
+    "react-apollo": "^2.5.3",
+    "react-bootstrap": "^1.0.0-beta.6",
+    "react-debounce-input": "^3.2.0",
+    "react-dom": "^16.8.4",
+    "react-github-login": "^1.0.3",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
