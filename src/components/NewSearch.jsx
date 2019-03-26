@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import logo from './imgs/gitwisecat.png'
 
-class UserPage extends Component {
+class NewSearch extends Component {
 
     
     render() {
@@ -26,11 +26,10 @@ class UserPage extends Component {
                     </Col>
                         Name <br />
                         GitHub URL <br />
-                        <Link to="/favorites">Favorites</Link> <br />
-                        <Link to="/newsearch">SEARCH??</Link>
+                        <Link to="/favorites">Favorites</Link>
                     </Col>
                     <Col className="text-center mt-5" sm={8} md={10}>
-                        <h1>RECENT ACTIVITY</h1>
+                        <h1>SEARCH</h1>
                         <div className="w-75 mx-auto">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus natus deserunt provident ipsa velit libero consequatur impedit doloremque esse! Laboriosam distinctio consequatur exercitationem aperiam assumenda sed sequi laudantium maiores? Ratione.
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti possimus magni, numquam architecto aliquam inventore eaque perferendis consequuntur? Dignissimos in quam itaque! Officiis quisquam ullam pariatur totam, nulla dolorum amet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas suscipit sint commodi quaerat ipsum optio repudiandae, natus illum magni. Temporibus obcaecati inventore quasi, delectus reiciendis maxime ipsum illum maiores animi.
@@ -43,6 +42,6 @@ class UserPage extends Component {
     }
 }
 
-export default UserPage;
+export default NewSearch;
                     
-                        
+                

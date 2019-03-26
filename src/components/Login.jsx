@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import '../../src/App.css'
 
 class Login extends Component {
@@ -20,8 +21,9 @@ class Login extends Component {
     render() {
 
         return (
-            <div className="container d-inline-flex">
-                <Col className="text-center ml-5 mt-5 d-none d-sm-block">
+            <div className="container mx-auto">
+                <Row>
+                <Col className="text-center ml-2 mt-5" xs={8} md={6} >
                 Lorem ipsum dolor sit amet consectetur, 
                 adipisicing elit. Sed harum deleniti delectus, 
                 recusandae vero, odit sint quae adipisci unde magnam, 
@@ -31,7 +33,7 @@ class Login extends Component {
                 recusandae vero, odit sint quae adipisci unde magnam, 
                 a et nostrum! A, asperiores. Non totam eos qui et.
                 </Col>
-                <Col className="ml-5 ">
+                <Col>
                 <Card border="dark" style={{ width: '22rem' }}>
                     <Card.Header>LOGIN/SIGN UP</Card.Header>
                     <Card.Body>
@@ -58,6 +60,7 @@ class Login extends Component {
                     </Card.Body>
                 </Card>
                 </Col>
+                </Row>
             </div>
         )
     }
