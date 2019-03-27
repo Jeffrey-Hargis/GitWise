@@ -3,7 +3,7 @@ import { Link, Switch, Route, withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import logo from './imgs/gitwisecat.png'
+import logo from './images/gitwisecat.png'
 
 class Favorites extends Component {
     render() {

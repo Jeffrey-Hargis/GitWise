@@ -3,11 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-boost": "^0.3.1",
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
     "mongoose": "^5.4.19",
     "react": "^16.8.4",
+    "react-apollo": "^2.5.3",
     "react-bootstrap": "^1.0.0-beta.6",
+    "react-debounce-input": "^3.2.0",
     "react-dom": "^16.8.4",
+    "react-github-login": "^1.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8"
   },
@@ -25,5 +32,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1"
+  }
 }

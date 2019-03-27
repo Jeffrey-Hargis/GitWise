@@ -3,15 +3,21 @@ import { Link, withRouter } from 'react-router-dom';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import logo from './imgs/gitwisecat.png'
+import logo from './images/gitwisecat.png'
+import gql from 'graphql-tag'
+
 
 class UserPage extends Component {
 
-    
+    handleChange = (event) => {
+        this.setState({query: event.target.value});
+    }
+
     render() {
 
         return (
-            <div>
+            <div>          
+                        
             <Container className="border mx-auto">
                 <Row className="border">
                     <Col className="border-right text-center" sm={4} md={2}>

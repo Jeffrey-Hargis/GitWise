@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import Login from './components/Login'
 import UserPage from './components/UserPage'
 import Favorites from './components/Favorites';
 import NewSearch from './components/NewSearch';
 
-
 class App extends Component {
   render() {
+    const { auth } = this.props;
     return (
       <div className="App">
-        <NavBar />
-        <Route exact path="/" component={Login}/>
-        <Route path="/userhome" component={UserPage}/>
+        <NavBar auth={auth} />
         <Route path="/favorites" component={Favorites}/>
         <Route path="/newsearch" component={NewSearch}/>
+        <Route exact path="/" render={(props) => !auth.isAuthenticated() ? <Login {...props} auth={auth} /> : <Redirect to="/home" />}/>
+        <Route path="/home" component={(props) => auth.isAuthenticated() ? <UserPage {...props} auth={auth} /> : <Redirect to="/" />}/>
       </div>
     )
     }
 }
 
 export default App;
+        

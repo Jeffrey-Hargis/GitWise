@@ -7,21 +7,30 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import GitHubLogin from 'react-github-login';
 import '../../src/App.css'
 
+
+// TODO: Jeff, replace with ur own
+// TODO: put in a config file? idk. its just one thing
+const clientId = "6ef3a0bce89af9b367d4";
+
+// TODO: Jeff, this will change once you actually deploy it
+// TODO: I'm not sure if you are actually required to set it (but probably, but try without it anyway)
+const redirectUri = "http://localhost:3000/";
+
 class Login extends Component {
-    constructor(props) {
-        super(props)
-        this.state ={
-            username: "",
-            password: "",
-            redirect: false
-        }
-    }
+    onSuccess = async ({code}) => {
+        const { auth } = this.props;
+        await auth.login(code);
+    };
+    
     render() {
 
-        return (
+    
+    return (
             <div className="container mx-auto">
+
                 <Row>
                 <Col className="text-center ml-2 mt-5" xs={8} md={6} >
                 Lorem ipsum dolor sit amet consectetur, 
@@ -56,14 +65,20 @@ class Login extends Component {
                         <Button className="ml-2" variant="dark" type="submit">
                         Sign Up
                         </Button>
+
+                        <GitHubLogin className="btn btn-github"
+                        clientId={clientId}
+                        redirectUri={redirectUri}
+                        onSuccess={this.onSuccess}
+                        onFailure={this.onFailure}/>
                     </Form>
                     </Card.Body>
                 </Card>
                 </Col>
                 </Row>
             </div>
-        )
-    }
+    )
+}
     
 
 }
