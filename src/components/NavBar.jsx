@@ -3,11 +3,13 @@ import Navbar from 'react-bootstrap/Navbar'
 import logo from '../images/gitwisecat.png';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import logout from '../services/auth.js';
 
 const USER_QUERY = gql`
   {
     viewer {
       login
+      avatarUrl
       starredRepositories {
         totalCount
       }
@@ -21,8 +23,8 @@ class NavBar extends Component {
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="#home" className="d-inline-flex">
           <img
+          src={logo}
             alt="logo"
-            src={logo}
             width="60"
             height="50"
             className="d-inline-flex align-top"
@@ -32,7 +34,11 @@ class NavBar extends Component {
             {({ loading, error, data }) => {
                 if (loading) return 'Loading...';
                 if (error) return null;
-                return <h4>{data.viewer.login} - {data.viewer.starredRepositories.totalCount}</h4>
+                return <div className="right: 50px">
+                
+                {data.viewer.login} : {data.viewer.starredRepositories.totalCount}
+      
+                </div>
             }}
           </Query> : null}
         </Navbar.Brand>

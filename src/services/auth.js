@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { history } from '../utils'
+import { renderToStringWithData } from 'react-apollo';
 
-// TODO: Jeff, replace this.
+// TODO: Replace this.
 // TODO: follow the heroku directions https://github.com/prose/gatekeeper here
-// TODO: with your own github oauth shit
+// TODO: with my own github oauth shit
 const exchangeUrl = "https://jeffs-stupid-thing.herokuapp.com/authenticate/";
 
 export default class Auth {
