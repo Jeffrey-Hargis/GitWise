@@ -2,3 +2,13 @@
   width: 100%;
   margin: 125px 100px;
 }
+
+/* fix the right alignment of the nav dropdown menu */
+#gitwise-nav-dropdown+div {
+  right: 0;
+  left: auto;
+}
+
+#gitwise-nav-dropdown {
+  color: #fff
+}
