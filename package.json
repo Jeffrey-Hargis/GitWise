@@ -10,6 +10,7 @@
     "gpg": "^0.6.0",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
+    "history": "4.9.0",
     "mongoose": "^5.4.19",
     "react": "^16.8.4",
     "react-apollo": "^2.5.3",
@@ -18,7 +19,8 @@
     "react-dom": "^16.8.4",
     "react-github-login": "^1.0.3",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-stack-grid": "^0.7.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,6 +1,10 @@
 import axios from 'axios'
-import { history } from '../utils'
-import { renderToStringWithData } from 'react-apollo';
+import {
+    githubClient
+} from './'
+import {
+    history
+} from '../utils'
 
 // TODO: Replace this.
 // TODO: follow the heroku directions https://github.com/prose/gatekeeper here
@@ -8,11 +12,13 @@ import { renderToStringWithData } from 'react-apollo';
 const exchangeUrl = "https://jeffs-stupid-thing.herokuapp.com/authenticate/";
 
 export default class Auth {
-    static TOKEN_KEY = "token";
+    static TOKEN_KEY = "token"
 
     async login(code) {
         try {
-            const { data } = await axios.get(`${exchangeUrl}${code}`);
+            const {
+                data
+            } = await axios.get(`${exchangeUrl}${code}`);
             localStorage.setItem(Auth.TOKEN_KEY, data.token);
             history.replace('/home');
         } catch (error) {
@@ -23,6 +29,7 @@ export default class Auth {
     logout() {
         localStorage.clear();
         history.replace('/');
+        window.location.reload();
     }
 
     getAccessToken() {

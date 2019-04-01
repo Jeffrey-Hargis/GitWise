@@ -1,10 +1,7 @@
-import React, { Component } from 'react'; 
-import GitHubLogin from 'react-github-login';
-import '../../src/App.css';
-import logout from '../services/auth.js';
-
-
-
+import React, { useState } from "react";
+import GitHubLogin from "react-github-login";
+import { Redirect } from "react-router-dom";
+import "../../src/App.css";
 
 // TODO: put in a config file? idk. its just one thing
 const clientId = "6ef3a0bce89af9b367d4";
@@ -12,26 +9,28 @@ const clientId = "6ef3a0bce89af9b367d4";
 // TODO: Will change once I actually deploy it
 const redirectUri = "http://localhost:3000/";
 
-class Login extends Component {
-    onSuccess = async ({code}) => {
-        const { auth } = this.props;
-        await auth.login(code);
-    };
-
-    onFailure = response => console.error(response);
-
-    render() {
-        // TODO: Need to add more scopes to the scope property here
-        // TODO: probably, that is, if I want to be able to do more (like star shit)
-        return (
-            <div>
-            <GitHubLogin clientId={clientId}
-                redirectUri={redirectUri}
-                onSuccess={this.onSuccess}
-                onFailure={this.onFailure}/>
-            </div>
-        )
+const Login = props => {
+  const onSuccess = async ({ code }) => {
+    try {
+      const { auth } = props;
+      await auth.login(code);
+      props.loggedIn(true);
+    } catch (error) {
+      alert(error);
     }
-}
+  };
+
+  const onFailure = response => console.error(response);
+
+  return (
+    <GitHubLogin
+      scope="user:email public_repo gist"
+      clientId={clientId}
+      redirectUri={redirectUri}
+      onSuccess={onSuccess}
+      onFailure={onFailure}
+    />
+  );
+};
 
 export default Login;
