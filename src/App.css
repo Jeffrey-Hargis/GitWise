@@ -7,6 +7,7 @@
 #gitwise-nav-dropdown+div {
   right: 0;
   left: auto;
+  z-index: 10001;
 }
 
 #gitwise-nav-dropdown {

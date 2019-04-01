@@ -17,15 +17,18 @@ class UserPage extends Component {
     return (
       <div>
         <DebounceInput
-          minLength={3}
           debounceTimeout={300}
           onChange={this.handleChange}
           placeholder="Type here to start searching..."
+          autoFocus
           style={{
             width: "100vw",
             height: "80px",
             fontSize: 35,
-            paddingLeft: "2vw"
+            paddingLeft: "2vw",
+            position: "sticky",
+            top: "0px",
+            zIndex: 1000
           }}
         />
         <Query query={SEARCH_QUERY} variables={{ query }}>
@@ -65,7 +68,7 @@ class UserPage extends Component {
                 columnWidth={width}
                 gutterWidth={gutters}
                 gutterHeight={gutters}
-                style={{ marginTop: 10 }}
+                style={{ marginTop: 15 }}
               >
                 {data.search.nodes.map(
                   ({
