@@ -11,15 +11,15 @@ class Favorites extends Component {
 
         return (
             <div>
-            <Container className="border mx-auto">
-                <Row className="border">
-                    <Col className="border-right text-center" sm={4} md={2}>
+            <Container className="border mx-auto" style={{height:"700px"}}>
+                <Row className="">
+                    <Col className="bg-light border-right text-center" sm={4} md={2} style={{height:"700px", color:"gray"}}>
                     <Col xs={3} md={4}>
                     <img
                         alt=""
                         src={logo}
-                        width="75"
-                        height="75"
+                        width="100"
+                        height="100"
                         className="rounded-circle ml-4 mt-3"
                     />
                     </Col>
