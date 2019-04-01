@@ -63,10 +63,10 @@ class NewSearch extends Component {
                         className="rounded-circle ml-4 mt-3"
                     />
                     </Col>
-                        <Link to="/" alt="userhome">NAME</Link> <br />
-                        <Link to="GitHub URL">GITHUB LINK</Link> <br />
-                        <Link to="/favorites">FAVES</Link> <br />
-                        <Link eventKey="disabled" disabled>SEARCH</Link>
+                        <Link to="/" alt="userhome" className="text-muted">NAME</Link> <br />
+                        <Link to="GitHub URL" className="text-muted">GITHUB LINK</Link> <br />
+                        <Link to="/favorites" className="text-muted">FAVES</Link> <br />
+                        <Link eventKey="disabled" disabled className="text-muted">SEARCH</Link>
                     </Col>
                     <Col className="mt-5" sm={8} md={10}>
                         <h1 className="text-center">SEARCH</h1> 

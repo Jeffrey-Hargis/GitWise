@@ -28,10 +28,10 @@ class UserPage extends Component {
                         className="rounded-circle ml-4 mt-3"
                     />
                     </Col>
-                        <Link to="/" alt="userhome">NAME</Link> <br />
-                        <Link to="GitHub URL">GITHUB LINK</Link> <br />
-                        <Link to="/favorites">FAVES</Link> <br />
-                        <Link to="/newsearch">SEARCH</Link>
+                        <Link to="/" alt="userhome" className="text-muted">NAME</Link> <br />
+                        <Link to="GitHub URL" className="text-muted">GITHUB LINK</Link> <br />
+                        <Link to="/favorites" className="text-muted">FAVES</Link> <br />
+                        <Link to="/newsearch" className="text-muted">SEARCH</Link>
                     </Col>
                     <Col className="text-center mt-5" sm={8} md={10}>
                         <h1>RECENT ACTIVITY</h1>

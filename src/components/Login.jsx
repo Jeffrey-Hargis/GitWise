@@ -7,7 +7,6 @@ import Row from 'react-bootstrap/Row'
 import GitHubLogin from 'react-github-login';
 import '../../src/App.css'
 
-
 // TODO: Jeff, replace with ur own
 // TODO: put in a config file? idk. its just one thing
 const clientId = "6ef3a0bce89af9b367d4";
@@ -68,20 +67,17 @@ class Login extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" />
                     </Form.Group>
-                        <Button variant="dark" type="submit">
-                        Submit
-                        </Button>
-                        <Button className="ml-2" variant="dark" type="submit">
-                        Sign Up
-                        </Button>
-
-                        <GitHubLogin
+                        <Button className="btn btn-dark">
+                        <i class="fab fa-github fa-2x"></i>
+                        <GitHubLogin className="btn btn-dark"
                         clientId={clientId}
                         redirectUri={redirectUri}
                         onSuccess={this.onSuccess}
                         onFailure={this.onFailure}
                         onRequest={this.onRequest}
                         />
+                        </Button>
+                        
                     </Form>
                     </Card.Body>
                 </Card>

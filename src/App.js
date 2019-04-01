@@ -16,6 +16,7 @@ class App extends Component {
         <NavBar auth={auth} />
         <Route path="/favorites" component={Favorites}/>
         <Route path="/newsearch" component={NewSearch}/>
+        <Route path="/login" component={Login} />
         <Route exact path="/" render={(props) => !auth.isAuthenticated() ? <UserPage {...props} auth={auth} /> : <Redirect to="/home" />}/>
         <Route path="/home" component={(props) => auth.isAuthenticated() ? <NewSearch {...props} auth={auth} /> : <Redirect to="/" />}/>
       </div>
