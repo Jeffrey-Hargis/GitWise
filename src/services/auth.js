@@ -12,6 +12,7 @@ export default class Auth {
     async login(code) {
         try {
             const { data } = await axios.get(`${exchangeUrl}${code}`);
+            console.log(code);
             localStorage.setItem(Auth.TOKEN_KEY, data.token);
             history.replace('/home');
         } catch (error) {

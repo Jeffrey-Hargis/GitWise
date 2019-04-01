@@ -15,13 +15,12 @@ const USER_QUERY = gql`
   }
 `;
 
-
 class NavBar extends Component { 
   
   render() {
 
     return (
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" fixed="top">
         <Navbar.Brand href="#home" className="d-inline-flex">
           <img
             alt="logo"
@@ -43,3 +42,4 @@ class NavBar extends Component {
 }
 
   export default NavBar;  
+

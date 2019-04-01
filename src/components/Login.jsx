@@ -1,7 +1,4 @@
 import React, { Component } from 'react'; 
-import { withRouter } from 'react-router-dom'; 
-// import axios from 'axios';
-// import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
@@ -20,12 +17,24 @@ const clientId = "6ef3a0bce89af9b367d4";
 const redirectUri = "http://localhost:3000/";
 
 class Login extends Component {
+
     onSuccess = async ({code}) => {
+        console.log("Demo Day!!!")
         const { auth } = this.props;
         await auth.login(code);
     };
+
+    onFailure = async ({code}) => {
+        console.log("fail!!!")
+        console.log(code)
+    };
     
+    onRequest = (stuff)=>{
+        console.log(stuff)
+    }
+
     render() {
+        console.log("Demo Day!!!")
 
     
     return (
@@ -66,11 +75,13 @@ class Login extends Component {
                         Sign Up
                         </Button>
 
-                        <GitHubLogin className="btn btn-github"
+                        <GitHubLogin
                         clientId={clientId}
                         redirectUri={redirectUri}
                         onSuccess={this.onSuccess}
-                        onFailure={this.onFailure}/>
+                        onFailure={this.onFailure}
+                        onRequest={this.onRequest}
+                        />
                     </Form>
                     </Card.Body>
                 </Card>
