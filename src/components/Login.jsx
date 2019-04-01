@@ -10,14 +10,11 @@ const clientId = "6ef3a0bce89af9b367d4";
 const redirectUri = "http://localhost:3000/";
 
 const Login = props => {
-  const [loggedIn, setLoggedIn] = useState(props.auth.isAuthenticated());
-
   const onSuccess = async ({ code }) => {
     try {
       const { auth } = props;
       await auth.login(code);
       props.loggedIn(true);
-      setLoggedIn(true);
     } catch (error) {
       alert(error);
     }
@@ -26,19 +23,13 @@ const Login = props => {
   const onFailure = response => console.error(response);
 
   return (
-    <div>
-      {loggedIn ? (
-        <Redirect to="/home" />
-      ) : (
-        <GitHubLogin
-          scope="user:email public_repo gist"
-          clientId={clientId}
-          redirectUri={redirectUri}
-          onSuccess={onSuccess}
-          onFailure={onFailure}
-        />
-      )}
-    </div>
+    <GitHubLogin
+      scope="user:email public_repo gist"
+      clientId={clientId}
+      redirectUri={redirectUri}
+      onSuccess={onSuccess}
+      onFailure={onFailure}
+    />
   );
 };
 
