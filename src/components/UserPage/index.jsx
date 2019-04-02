@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import { Query, Mutation } from "react-apollo";
 import { DebounceInput } from "react-debounce-input";
-import { Spinner, Card, Navbar } from "react-bootstrap";
+import { Spinner, Card, Navbar, Badge } from "react-bootstrap";
 import StackGrid from "react-stack-grid";
 import { SEARCH_QUERY, STAR_REPO, UNSTAR_REPO } from "./queries";
+import { TopSearches } from "../TopSearches";
+import client from "../../services/firebase";
 
 class UserPage extends Component {
-  state = { query: "squirrel" };
+  state = { query: "" };
 
   handleChange = event => {
-    this.setState({ query: event.target.value });
+    const query = event.target.value;
+    this.setState({ query }, () => {
+      if (query.length >= 3) {
+        const newSearchRef = client.topSearches().push();
+        newSearchRef.set({ search: query });
+      }
+    });
   };
 
   render() {
@@ -17,6 +25,7 @@ class UserPage extends Component {
     return (
       <div>
         <DebounceInput
+          value={query}
           debounceTimeout={300}
           onChange={this.handleChange}
           placeholder="Type here to start searching..."
@@ -31,8 +40,24 @@ class UserPage extends Component {
             zIndex: 1000
           }}
         />
+        {query.length > 0 ? (
+          <h2>
+            <Badge
+              onClick={() => this.setState({ query: "" })}
+              style={{
+                position: "absolute",
+                top: 95,
+                right: 15,
+                zIndex: 10002
+              }}
+              variant="secondary"
+            >
+              Clear Search
+            </Badge>
+          </h2>
+        ) : null}
         <Query query={SEARCH_QUERY} variables={{ query }}>
-          {({ loading, error, data }) => {
+          {({ loading, error, data, refetch }) => {
             if (loading)
               return (
                 <div
@@ -44,19 +69,14 @@ class UserPage extends Component {
                   </Spinner>
                 </div>
               );
+
             if (error) return `Error! ${error.message}`;
 
             if (data.search.nodes.length <= 0) {
               return (
-                <div
-                  className="text-center"
-                  style={{ height: "100vh", paddingTop: "15vh" }}
-                >
-                  <div>
-                    <span style={{ fontSize: 140 }}>😞</span>
-                  </div>
-                  <h2>No Results!</h2>
-                </div>
+                <TopSearches
+                  onSearchClicked={query => this.setState({ query })}
+                />
               );
             }
 
@@ -77,6 +97,7 @@ class UserPage extends Component {
                     description,
                     url,
                     viewerHasStarred,
+                    forkCount,
                     owner: { login, avatarUrl },
                     stargazers: { totalCount }
                   }) => (
@@ -114,6 +135,7 @@ class UserPage extends Component {
                                         }
                                       }
                                     });
+                                    refetch();
                                   } catch (error) {
                                     alert(error);
                                   }
@@ -122,8 +144,8 @@ class UserPage extends Component {
                                 {loading
                                   ? "Loading..."
                                   : viewerHasStarred
-                                  ? "Unstar"
-                                  : "Star"}
+                                  ? `Unstar  (${totalCount.toLocaleString()})`
+                                  : `Star (${totalCount.toLocaleString()})`}
                               </a>
                             );
                           }}

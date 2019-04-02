@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-export const SEARCH_QUERY = gql `
+export const SEARCH_QUERY = gql`
   query search($query: String!) {
     search(query: $query, type: REPOSITORY, first: 50) {
       nodes {
@@ -15,6 +15,7 @@ export const SEARCH_QUERY = gql `
             avatarUrl
           }
           viewerHasStarred
+          forkCount
           stargazers {
             totalCount
           }
@@ -24,7 +25,7 @@ export const SEARCH_QUERY = gql `
   }
 `;
 
-export const STAR_REPO = gql `
+export const STAR_REPO = gql`
   mutation StarRepo($input: AddStarInput!) {
     addStar(input: $input) {
       clientMutationId
@@ -36,7 +37,7 @@ export const STAR_REPO = gql `
   }
 `;
 
-export const UNSTAR_REPO = gql `
+export const UNSTAR_REPO = gql`
   mutation UnstarRepo($input: RemoveStarInput!) {
     removeStar(input: $input) {
       clientMutationId

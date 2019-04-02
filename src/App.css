@@ -4,12 +4,12 @@
 }
 
 /* fix the right alignment of the nav dropdown menu */
-#gitwise-nav-dropdown+div {
+#gitwise-nav-dropdown + div {
   right: 0;
   left: auto;
-  z-index: 10001;
+  z-index: 10003;
 }
 
 #gitwise-nav-dropdown {
-  color: #fff
+  color: #fff;
 }

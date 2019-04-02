@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bulma": "^0.7.4",
+    "firebase": "^5.9.2",
     "gpg": "^0.6.0",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
