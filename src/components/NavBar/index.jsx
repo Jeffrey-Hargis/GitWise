@@ -48,9 +48,12 @@ const NavBar = props => (
               <NavDropdown.Header>
                 Signed in as <b>{data.viewer.login}</b>
               </NavDropdown.Header>
-              <NavDropdown.Item href="/home">Search Repos</NavDropdown.Item>
+              <NavDropdown.Item href="/home">
+                <i className="fas fa-search" style={{ marginRight: 10 }} />
+                Search Repos
+              </NavDropdown.Item>
               <NavDropdown.Item href="/starred">
-                <i className="fab fa-github" style={{ marginRight: 5 }} />
+                <i className="fas fa-star" style={{ marginRight: 10 }} />
                 Starred Repos ({data.viewer.starredRepositories.totalCount})
               </NavDropdown.Item>
               <NavDropdown.Divider />
@@ -60,6 +63,7 @@ const NavBar = props => (
                   props.auth.logout();
                 }}
               >
+                <i class="fas fa-sign-out-alt" style={{ marginRight: 10 }} />
                 Sign Out
               </NavDropdown.Item>
             </NavDropdown>
