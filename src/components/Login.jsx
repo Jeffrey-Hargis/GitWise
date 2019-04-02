@@ -1,39 +1,32 @@
-import React, { Component } from 'react'; 
+import React, { useState } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import GitHubLogin from 'react-github-login';
+import { Redirect } from "react-router-dom";
 import '../../src/App.css'
 
-// TODO: Jeff, replace with ur own
+
 // TODO: put in a config file? idk. its just one thing
-const clientId = "6ef3a0bce89af9b367d4";
+const clientId =
+  process.env.REACT_APP_GITHUB_CLIENT_ID || "a57a1c87aad672437c55";
 
-// TODO: Jeff, this will change once you actually deploy it
-// TODO: I'm not sure if you are actually required to set it (but probably, but try without it anyway)
-const redirectUri = "http://localhost:3000/";
+const redirectUri = process.env.REACT_APP_CALLBACK || "http://localhost:3000/";
 
-class Login extends Component {
-
-    onSuccess = async ({code}) => {
-        console.log("Demo Day!!!")
-        const { auth } = this.props;
-        await auth.login(code);
-    };
-
-    onFailure = async ({code}) => {
-        console.log("fail!!!")
-        console.log(code)
-    };
-    
-    onRequest = (stuff)=>{
-        console.log(stuff)
+const Login = props => {
+  const onSuccess = async ({ code }) => {
+    try {
+      const { auth } = props;
+      await auth.login(code);
+      props.loggedIn(true);
+    } catch (error) {
+      alert(error);
     }
+  };
 
-    render() {
-        console.log("Demo Day!!!")
+  const onFailure = response => console.error(response);
 
     
     return (
@@ -70,12 +63,12 @@ class Login extends Component {
                         <Button className="btn btn-dark">
                         <i class="fab fa-github fa-2x"></i>
                         <GitHubLogin className="btn btn-dark"
-                        clientId={clientId}
-                        redirectUri={redirectUri}
-                        onSuccess={this.onSuccess}
-                        onFailure={this.onFailure}
-                        onRequest={this.onRequest}
-                        />
+                            scope="user:email public_repo gist"
+                            clientId={clientId}
+                            redirectUri={redirectUri}
+                            onSuccess={onSuccess}
+                            onFailure={onFailure}
+                            />
                         </Button>
                         
                     </Form>
@@ -86,8 +79,7 @@ class Login extends Component {
             </div>
     )
 }
-    
 
-}
 
 export default Login;
+
