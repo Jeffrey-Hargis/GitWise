@@ -103,18 +103,29 @@ class UserPage extends Component {
                   }) => (
                     <Card key={id}>
                       <div style={{ overflow: "hidden" }}>
-                        <Card.Img
-                          variant="top"
-                          style={{ width, height: width }}
-                          src={avatarUrl}
-                          href={url}
-                        />
+                        <a href={url} target="_blank">
+                          <Card.Img
+                            variant="top"
+                            style={{ width, height: width }}
+                            src={avatarUrl}
+                            href={url}
+                          />
+                        </a>
                       </div>
                       <Card.Body>
-                        <Card.Title>{name}</Card.Title>
+                        <a href={url} target="_blank">
+                          <Card.Title>{name}</Card.Title>
+                        </a>
+                        <a href={`https://github.com/${login}`} target="_blank">
+                          <Card.Subtitle>{login}</Card.Subtitle>
+                        </a>
                         <Card.Text>{description}</Card.Text>
-                        <a href={url} target="_blank" className="card-link">
-                          Open
+                        <a
+                          href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20cool%20repo:&url=${url}`}
+                          target="_blank"
+                          className="card-link"
+                        >
+                          Tweet
                         </a>
                         <Mutation
                           mutation={viewerHasStarred ? UNSTAR_REPO : STAR_REPO}
