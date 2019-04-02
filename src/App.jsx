@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import { Route, Redirect } from "react-router-dom";
 import Login from "./components/Login";
 import UserPage from "./components/UserPage";
-import { history } from "./utils";
+import Starred from "./components/Starred";
 
 const App = props => {
   const { auth } = props;
@@ -22,6 +22,12 @@ const App = props => {
           ) : (
             <Redirect to="/home" />
           )
+        }
+      />
+      <Route
+        path="/starred"
+        component={props =>
+          isLoggedIn ? <Starred {...props} auth={auth} /> : <Redirect to="/" />
         }
       />
       <Route exact path="/logout" render={props => <Redirect to="/home" />} />

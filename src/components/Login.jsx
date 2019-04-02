@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import GitHubLogin from "react-github-login";
-import { Redirect } from "react-router-dom";
+import { github } from "../config";
+
 import "../../src/App.css";
 
-// TODO: put in a config file? idk. its just one thing
-const clientId =
-  process.env.REACT_APP_GITHUB_CLIENT_ID || "a57a1c87aad672437c55";
-
-const redirectUri = process.env.REACT_APP_CALLBACK || "http://localhost:3000/";
+const { clientId, redirectUri, scope } = github;
 
 const Login = props => {
   const onSuccess = async ({ code }) => {
@@ -24,7 +21,7 @@ const Login = props => {
 
   return (
     <GitHubLogin
-      scope="user:email public_repo gist"
+      scope={scope}
       clientId={clientId}
       redirectUri={redirectUri}
       onSuccess={onSuccess}

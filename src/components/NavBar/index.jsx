@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Navbar, NavDropdown, Spinner } from "react-bootstrap";
 import logo from "../../images/gitwisecat.png";
 import { Query } from "react-apollo";
@@ -39,6 +39,7 @@ const NavBar = props => (
                     width: 40,
                     borderRadius: 20
                   }}
+                  alt={data.viewer.login}
                   src={data.viewer.avatarUrl}
                 />
               }
