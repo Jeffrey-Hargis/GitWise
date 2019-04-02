@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Navbar, NavDropdown, Spinner } from "react-bootstrap";
 import logo from "../../images/gitwisecat.png";
 import { Query } from "react-apollo";
@@ -39,6 +39,7 @@ const NavBar = props => (
                     width: 40,
                     borderRadius: 20
                   }}
+                  alt={data.viewer.login}
                   src={data.viewer.avatarUrl}
                 />
               }
@@ -47,12 +48,19 @@ const NavBar = props => (
               <NavDropdown.Header>
                 Signed in as <b>{data.viewer.login}</b>
               </NavDropdown.Header>
+              <NavDropdown.Item href="/home">Search Repos</NavDropdown.Item>
+              <NavDropdown.Item href="/starred">
+                <i className="fab fa-github" style={{ marginRight: 5 }} />
+                Starred Repos ({data.viewer.starredRepositories.totalCount})
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item
+                style={{ color: "red" }}
                 onClick={() => {
                   props.auth.logout();
                 }}
               >
-                Logout
+                Sign Out
               </NavDropdown.Item>
             </NavDropdown>
           );

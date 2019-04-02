@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Query, Mutation } from "react-apollo";
+import { Query } from "react-apollo";
 import { DebounceInput } from "react-debounce-input";
-import { Spinner, Card, Navbar, Badge } from "react-bootstrap";
-import StackGrid from "react-stack-grid";
-import { SEARCH_QUERY, STAR_REPO, UNSTAR_REPO } from "./queries";
+import { Spinner, Badge } from "react-bootstrap";
+import { SEARCH_QUERY } from "./queries";
 import { TopSearches } from "../TopSearches";
 import client from "../../services/firebase";
+import { RepoList } from "../RepoList";
 
 class UserPage extends Component {
   state = { query: "" };
@@ -80,93 +80,7 @@ class UserPage extends Component {
               );
             }
 
-            const width = 222;
-            const gutters = 15;
-
-            return (
-              <StackGrid
-                columnWidth={width}
-                gutterWidth={gutters}
-                gutterHeight={gutters}
-                style={{ marginTop: 15 }}
-              >
-                {data.search.nodes.map(
-                  ({
-                    id,
-                    name,
-                    description,
-                    url,
-                    viewerHasStarred,
-                    forkCount,
-                    owner: { login, avatarUrl },
-                    stargazers: { totalCount }
-                  }) => (
-                    <Card key={id}>
-                      <div style={{ overflow: "hidden" }}>
-                        <a href={url} target="_blank">
-                          <Card.Img
-                            variant="top"
-                            style={{ width, height: width }}
-                            src={avatarUrl}
-                            href={url}
-                          />
-                        </a>
-                      </div>
-                      <Card.Body>
-                        <a href={url} target="_blank">
-                          <Card.Title>{name}</Card.Title>
-                        </a>
-                        <a href={`https://github.com/${login}`} target="_blank">
-                          <Card.Subtitle>{login}</Card.Subtitle>
-                        </a>
-                        <Card.Text>{description}</Card.Text>
-                        <a
-                          href={`https://twitter.com/intent/tweet?text=Check%20out%20this%20cool%20repo:&url=${url}`}
-                          target="_blank"
-                          className="card-link"
-                        >
-                          Tweet
-                        </a>
-                        <Mutation
-                          mutation={viewerHasStarred ? UNSTAR_REPO : STAR_REPO}
-                        >
-                          {(toggleFavorite, { loading }) => {
-                            return (
-                              <a
-                                className="card-link"
-                                href="#"
-                                onClick={async e => {
-                                  e.preventDefault();
-
-                                  try {
-                                    await toggleFavorite({
-                                      variables: {
-                                        input: {
-                                          starrableId: id
-                                        }
-                                      }
-                                    });
-                                    refetch();
-                                  } catch (error) {
-                                    alert(error);
-                                  }
-                                }}
-                              >
-                                {loading
-                                  ? "Loading..."
-                                  : viewerHasStarred
-                                  ? `Unstar  (${totalCount.toLocaleString()})`
-                                  : `Star (${totalCount.toLocaleString()})`}
-                              </a>
-                            );
-                          }}
-                        </Mutation>
-                      </Card.Body>
-                    </Card>
-                  )
-                )}
-              </StackGrid>
-            );
+            return <RepoList repos={data.search.nodes} refetch={refetch} />;
           }}
         </Query>
       </div>

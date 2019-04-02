@@ -26,6 +26,7 @@ export const TopSearches = props => {
       <ListGroup>
         {searches.map(({ search }) => (
           <ListGroup.Item
+            key={search}
             action
             onClick={e => {
               const search = e.target.innerHTML;
