@@ -5,7 +5,6 @@ import { Route, Redirect } from "react-router-dom";
 import Login from "./components/Login";
 import UserPage from "./components/UserPage";
 import { history } from "./utils";
-import { BrowserRouter as Router } from "react-router-dom";
 
 const App = props => {
   const { auth } = props;

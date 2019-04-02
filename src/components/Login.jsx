@@ -6,8 +6,7 @@ import "../../src/App.css";
 // TODO: put in a config file? idk. its just one thing
 const clientId = "6ef3a0bce89af9b367d4";
 
-// TODO: Will change once I actually deploy it
-const redirectUri = "http://localhost:3000/";
+const redirectUri = process.env.REACT_APP_CALLBACK || "http://localhost:3000/";
 
 const Login = props => {
   const onSuccess = async ({ code }) => {

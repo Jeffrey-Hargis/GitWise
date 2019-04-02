@@ -10,11 +10,11 @@ const NavBar = props => (
       <img
         src={logo}
         alt="logo"
-        width="60"
-        height="50"
+        width="52"
+        height="42"
         className="d-inline-flex align-top"
       />
-      <h2>GITWISE</h2>
+      <h2>{"  "}GitWise</h2>
     </Navbar.Brand>
     {props.isAuthenticated ? (
       <Query query={USER_QUERY}>
