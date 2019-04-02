@@ -10,4 +10,4 @@ import { history } from './utils'
 
 const auth = new Auth();
 
-ReactDOM.render(<ApolloProvider client = {githubClient(auth)}><Router history = {history}><App auth = {auth}/></Router></ApolloProvider>, document.getElementById('root'));
+ReactDOM.render( <ApolloProvider client = {githubClient(auth)}><Router history = {history}><App auth = {auth}/> </Router > </ApolloProvider>, document.getElementById('root'));
