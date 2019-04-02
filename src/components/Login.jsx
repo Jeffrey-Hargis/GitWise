@@ -4,7 +4,8 @@ import { Redirect } from "react-router-dom";
 import "../../src/App.css";
 
 // TODO: put in a config file? idk. its just one thing
-const clientId = "6ef3a0bce89af9b367d4";
+const clientId =
+  process.env.REACT_APP_GITHUB_CLIENT_ID || "a57a1c87aad672437c55";
 
 const redirectUri = process.env.REACT_APP_CALLBACK || "http://localhost:3000/";
 
