@@ -10,7 +10,7 @@ export const firebase = {
 export const github = {
   exchangeUrl:
     process.env.REACT_APP_GITHUB_EXCHANGE_URL ||
-    "https://jeffs-stupid-thing.herokuapp.com/authenticate/",
+    "https://gitwise-exchange-gitwise.herokuapp.com/authenticate/",
   clientId: process.env.REACT_APP_GITHUB_CLIENT_ID || "a57a1c87aad672437c55",
   redirectUri: process.env.REACT_APP_CALLBACK || "http://localhost:3000/",
   scope: "user:email public_repo gist"

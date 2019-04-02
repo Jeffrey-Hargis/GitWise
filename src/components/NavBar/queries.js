@@ -6,6 +6,9 @@ export const USER_QUERY = gql`
       id
       login
       avatarUrl
+      starredRepositories {
+        totalCount
+      }
     }
   }
 `;

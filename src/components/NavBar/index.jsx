@@ -48,12 +48,19 @@ const NavBar = props => (
               <NavDropdown.Header>
                 Signed in as <b>{data.viewer.login}</b>
               </NavDropdown.Header>
+              <NavDropdown.Item href="/home">Search Repos</NavDropdown.Item>
+              <NavDropdown.Item href="/starred">
+                <i className="fab fa-github" style={{ marginRight: 5 }} />
+                Starred Repos ({data.viewer.starredRepositories.totalCount})
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item
+                style={{ color: "red" }}
                 onClick={() => {
                   props.auth.logout();
                 }}
               >
-                Logout
+                Sign Out
               </NavDropdown.Item>
             </NavDropdown>
           );

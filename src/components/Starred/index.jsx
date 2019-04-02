@@ -22,9 +22,12 @@ const Starred = () => (
 
         if (error) return `Error! ${error.message}`;
 
-        return (
-          <RepoList repos={data.viewer.starredRepositories} refetch={refetch} />
+        // flatten repos
+        const repos = data.viewer.starredRepositories.edges.map(
+          ({ node }) => node
         );
+
+        return <RepoList repos={repos} refetch={refetch} />;
       }}
     </Query>
   </div>
