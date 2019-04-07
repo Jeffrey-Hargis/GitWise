@@ -5,6 +5,7 @@ import { ListGroup, Container } from "react-bootstrap";
 export const TopSearches = props => {
   const [data, setData] = useState(null);
 
+  // FIXME: this may infinite loop, make sure the granularity is better on the useEffect check
   useEffect(() => {
     client
       .topSearches()
@@ -14,7 +15,7 @@ export const TopSearches = props => {
         snapshot => {
           setData(snapshot.val());
         },
-        [data]
+        []
       );
   });
 
